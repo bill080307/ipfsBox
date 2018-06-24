@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>ipfsBox</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navigation">
+        <h1 class="logo text-center"><img class="img-responsive" src="./assets/logo.png"></h1>
+        <div class="list-group">
+            <li class="list-group-item text-center">
+                <button type="button" class="btn btn-success" id="Home">全部</button>
+            </li>
+            <li class="list-group-item text-center">
+                <button type="button" class="btn btn-success" disabled id="publish">发布</button>
+            </li>
+            <li class="list-group-item text-center">
+                <a href="https://www.kancloud.cn/bill080307/ipfs_box" target="_blank">帮助手册</a>
+                <a href="https://github.com/bill080307/ipfsBox" target="_blank">GitHub</a>
+            </li>
+            <li class="list-group-item text-center">
+                捐赠
+                <img src="./assets/alipay.jpg" alt="支付宝捐赠" class="img-rounded img-responsive alipay">
+            </li>
+            <li class="list-group-item text-center">
+                总容量 <span id="totalsize"></span> / 无限
+            </li>
+        </div>
+    </div>
+    <div class="path">
+        <ol class="breadcrumb" style="margin-bottom: 5px;">
+            <li class="breadcrumb-item add">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="icon-plus"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#fileupload">
+                            <i class="icon-file"></i> 文件
+                        </button>
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#directory">
+                            <i class="icon-folder-open"></i> 目录
+                        </button>
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#link">
+                            <i class="icon-link"></i> 连接
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="filelist">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>文件名</th>
+                    <th>功能</th>
+                    <th>大小</th>
+                    <th>发布日期</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">文件上传</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <fieldset class="form-group">
+                    <input type="file" name="upfile" id="file_upload">
+                    <small class="text-muted">上传的文件将永久保存在ipfs空间中，，请不要上传隐私文件。</small>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary" id="do_fileupload" >开始上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="directory" tabindex="-1" role="dialog" aria-labelledby="directoryload" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="directoryload">新建链接</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <fieldset class="form-group">
+                    <label for="directoryname">目录名称</label>
+                    <input type="text" class="form-control" id="directoryname" placeholder="文件名称">
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="updir">上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="linkupload" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="linkupload">新建链接</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <fieldset class="form-group">
+                    <label for="title1">文件名称</label>
+                    <input type="text" class="form-control" id="title1" placeholder="文件名称">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="link2">链接</label>
+                    <input type="text" class="form-control" id="link2" placeholder="链接地址">
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="uplink">上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./plugin/base.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

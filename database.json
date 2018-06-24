@@ -1,0 +1,37 @@
+{
+  "files": [
+    {"title":"alipay.jpg",
+      "type":"file",
+      "fileType":"jpg",
+      "size":"125696",
+      "publishTime":1529858752680,
+      "ipfsPath":"QmYKJ1JA2yhTAnX8NDhKrVRq7if6iUeT3TXkCshBJ7DNFs"
+    },{
+      "title":"logo.png",
+      "type":"file",
+      "fileType":"png",
+      "size":"8341",
+      "publishTime":1529858761008,
+      "ipfsPath":"QmaUzei8kD2ZDp37mmjTiAQRewjSh8xXVfBrqpTwUp7DX9"
+    }
+  ],
+  "boxfilelist":[
+    "index.html",
+    "database.json",
+    "font/FontAwesome.otf",
+    "font/fontawesome-webfont.eot",
+    "font/fontawesome-webfont.svg",
+    "font/fontawesome-webfont.ttf",
+    "font/fontawesome-webfont.woff",
+    "css/bootstrap.min.css",
+    "css/font-awesome.min.css",
+    "css/style.css",
+    "js/bootstrap.min.js",
+    "js/jquery-3.3.1.min.js ",
+    "js/script.js",
+    "js/popper.js",
+    "plugin//base.js"
+  ],
+  "updatetime":1529858761011,
+  "totalsize":134037
+}
