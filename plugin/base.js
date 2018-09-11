@@ -6,7 +6,7 @@ plugin_file.button="<button type=\"button\" class=\"btn btn-sm btn-success plugi
 plugin_file.execute=function () {
     $("html").on("click",".plugin_file", function() {
         var path = $(this).parent().parent().data("key");
-        window.open(GETWAY+"/ipfs/"+path);
+        window.open("https://ipfs.io/ipfs/"+path);
     })
 };
 plugin_file.execute();
@@ -20,7 +20,9 @@ plugin_dir.button="<button type=\"button\" class=\"btn btn-sm btn-success plugin
 plugin_dir.execute=function () {
     $("html").on("click",".plugin_dir", function() {
         var title = $(this).parent().parent().find(".title").text();
+        var path = JSON.parse(localStorage.getItem("path"));
         path.push(title);
+        localStorage.setItem("path",JSON.stringify(path));
         Refreshfiles();
     })
 };
@@ -35,7 +37,7 @@ plugin_link.button="<button type=\"button\" class=\"btn btn-sm btn-success plugi
 plugin_link.execute=function () {
     $("html").on("click",".plugin_link", function() {
         var path = $(this).parent().parent().data("key");
-        window.open(GETWAY+"/ipfs/"+path);
+        window.open("https://ipfs.io/ipfs/"+path);
     })
 };
 plugin_link.execute();
