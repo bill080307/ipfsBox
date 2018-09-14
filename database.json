@@ -17,20 +17,13 @@
   ],
   "boxfilelist":[
     "index.html",
-    "database.json",
-    "font/FontAwesome.otf",
-    "font/fontawesome-webfont.eot",
-    "font/fontawesome-webfont.svg",
-    "font/fontawesome-webfont.ttf",
-    "font/fontawesome-webfont.woff",
+    "assets/alipay.jpg",
+    "assets/logo.png",
     "css/bootstrap.min.css",
-    "css/font-awesome.min.css",
-    "css/style.css",
+    "js/jquery.min.js",
     "js/bootstrap.min.js",
-    "js/jquery-3.3.1.min.js ",
     "js/script.js",
-    "js/popper.js",
-    "plugin//base.js"
+    "plugin/base.js"
   ],
   "updatetime":1529858761011,
   "totalsize":134037
